@@ -10,7 +10,7 @@ const db = mysql.createPool({
     password:'13070011',
     database:'database_powergym'
 });
-
+//Conexion a base de datos mysql
 db.getConnection((err, connection) => {
     if(err){
         if (err.code === 'PROTOCOL_CONNECTION_LOST'){
@@ -28,11 +28,15 @@ db.getConnection((err, connection) => {
     return;
 });
 
-
+//utilizamos el modulo cors para la comunicacion de request enviados desde HTTP
 app.use(cors());
+//utilizamos el framework express para la construccion dede una app web
+//.json es usado para analizar la solicitudes con cargas de tipo JSON
 app.use(express.json());
+//Utilizamos body-parser para poder acceder a la informacion de las peticiones
 app.use(bodyParser.urlencoded({extended: true}));
 
+//api para obtener datos de la bd
 app.get('/api/get', (req, res)=>{
 
     const sqlSelect ="SELECT * FROM clientes"
@@ -41,7 +45,7 @@ app.get('/api/get', (req, res)=>{
         res.send(result)
     } );
 });
-
+//api para insertar datos en la bd
 app.post('/api/insert', (req, res)=>{
 
     const nombre = req.body.nombre;
@@ -79,6 +83,7 @@ app.post('/api/insert', (req, res)=>{
 //     })
 
 // })
+//api para eliminar cliente en base al nombre
 app.delete("/api/delete/:nombre", (req, res) => {
     const nom = req.params.nombre;
     const sqlDelete ="DELETE FROM clientes WHERE nombre = ?"
@@ -88,7 +93,7 @@ app.delete("/api/delete/:nombre", (req, res) => {
         else console.log(result)
     });
 });
-
+//api para actualizar nombre de cliente
 app.put("/api/update", (req, res) => {
     const nom = req.body.nombre;
     const memb = req.body.membresia;
