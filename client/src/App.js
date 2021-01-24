@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import Axios from "axios";
-import Menu from "./Menu";
+import "./App.css";
 
 import { Button } from "react-bootstrap";
 
@@ -18,7 +17,7 @@ function App() {
   const [listaclientes, setListaClientes] = useState([]);
 
   const [newName, setNewName] = useState("");
-//utilizamos useEfect para hacer uso codigo no permitido dentro del main body
+  //utilizamos useEfect para hacer uso codigo no permitido dentro del main body
   useEffect(() => {
     //se utiliza axios del lado del cliente pasa enviar peticiones a apis
     Axios.get("http://localhost:3001/api/get").then((response) => {
@@ -54,7 +53,6 @@ function App() {
 
   const eliminarCliente = (nom) => {
     Axios.delete(`http://localhost:3001/api/delete/${nom}`);
-    
   };
 
   const actualizarCliente = (nom) => {
@@ -66,14 +64,11 @@ function App() {
   };
 
   return (
-
     <div className="App">
-    {/* <Menu></Menu> */}
-
-      <header className="App-header">
+      {/* <header className="App-header">
         <h1>Registro de cliente</h1>
-      </header>
-
+      </header> */}
+      <div>{/* <Menu></Menu> */}</div>
       <form className="form">
         <input
           type="text"
@@ -156,7 +151,7 @@ function App() {
         <Button onClick={submitReview}>Agregar cliente</Button>
       </form>
 
-        <div>
+      <div>
         {listaclientes.map((val) => {
           return (
             <div className="card">
@@ -197,8 +192,7 @@ function App() {
           );
         })}
       </div>
-
-    </div>
+      </div>
   );
 }
 

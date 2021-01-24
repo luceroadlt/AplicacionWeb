@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const app = express();
 const mysql = require('mysql');
+const { json } = require('body-parser');
 
 const db = mysql.createPool({
     host:'localhost',
@@ -73,7 +74,11 @@ app.post('/api/insert', (req, res)=>{
    
     db.query(sqlInsert, [nombre, apellidos, genero, email,telefono, membresia, entrenador, horario], (err, result) => {
         console.log(result)
+        res.json(result) 
+
     } );
+
+
 });
 
 // app.get('/',(req,res) =>{
@@ -91,6 +96,8 @@ app.delete("/api/delete/:nombre", (req, res) => {
     db.query(sqlDelete, nom, (err, result) => {
         if (err) console.log(err)
         else console.log(result)
+        res.json(result)
+
     });
 });
 //api para actualizar nombre de cliente
@@ -101,6 +108,8 @@ app.put("/api/update", (req, res) => {
    
     db.query(sqlUpdate, [memb,nom], (err, result) => {
         if (err) console.log(err)
+        res.json(result)
+
     });
 });
 
