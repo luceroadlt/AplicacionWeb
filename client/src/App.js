@@ -65,10 +65,9 @@ function App() {
 
   return (
     <div className="App">
-      {/* <header className="App-header">
+      <header className="App-header">
         <h1>Registro de cliente</h1>
-      </header> */}
-      <div>{/* <Menu></Menu> */}</div>
+      </header>
       <form className="form">
         <input
           type="text"
