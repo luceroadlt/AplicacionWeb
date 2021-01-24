@@ -1,13 +1,18 @@
 import React, { useState } from "react";
+import { useHistory } from 'react-router-dom';
 import "./Login.css";
 import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
+  const history = useHistory();
 
-  const onSubmit = () => {
-    window.location = "http://localhost:3001/principal";
+  const onSubmit = () => {;
+    // eslint-disable-next-line no-unused-expressions
+    email === 'lucero@gmail.com' && contraseña === '123' 
+    ? history.push('/principal')
+    : null
   };
   return (
     <form className="form-inner">
@@ -43,6 +48,8 @@ function Login() {
         Iniciar Sesión
       </button>
     </form>
+    
+  
   );
 }
 
