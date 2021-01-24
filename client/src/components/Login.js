@@ -1,11 +1,16 @@
 import React, { useState } from "react";
+import "./Login.css";
+import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
 
+  const onSubmit = () => {
+    window.location = "http://localhost:3001/principal";
+  };
   return (
-    <form>
+    <form className="form-inner">
       <h3>Iniciar Sesión</h3>
 
       <div className="form-group">
@@ -30,25 +35,13 @@ function Login() {
         />
       </div>
 
-      <div className="form-group">
-        <div className="custom-control custom-checkbox">
-          <input
-            type="checkbox"
-            className="custom-control-input"
-            id="customCheck1"
-          />
-          <label className="custom-control-label" htmlFor="customCheck1">
-            Recordarme
-          </label>
-        </div>
-      </div>
-
-      <button type="submit" className="btn btn-dark btn-lg btn-block">
+      <button
+        type="submit"
+        onClick={onSubmit}
+        className="btn btn-dark btn-lg btn-block"
+      >
         Iniciar Sesión
       </button>
-      <p className="forgot-password text-right">
-        Forgot <a href="#">password?</a>
-      </p>
     </form>
   );
 }
