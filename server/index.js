@@ -8,7 +8,7 @@ const { json } = require("body-parser");
 const db = mysql.createPool({
   host: "localhost",
   user: "root",
-  password: "13070011",
+  password: "xxxxxx",
   database: "database_powergym",
 });
 //Conexion a base de datos mysql
